@@ -7,9 +7,12 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
-@Component
+//@Component
+@Service
 class YourBusiness{
     DataService dataService;
 
@@ -20,7 +23,8 @@ class YourBusiness{
         return Arrays.stream(dataService.retrieveData()).max().orElse(0);
     }
 }
-@Component
+//@Component
+@Repository
 @Primary
 class MongoDbDataService implements DataService{
     @Override
@@ -28,7 +32,8 @@ class MongoDbDataService implements DataService{
         return new int[]{ 11, 22, 33, 44, 55};
     }
 }
-@Component
+//@Component
+@Repository
 class MySQLDataService implements DataService{
     @Override
     public int[] retrieveData() {
