@@ -1,0 +1,4 @@
+SELECT * FROM COURSE
+
+INSERT INTO COURSE(id, name, author)
+values(1, 'Learn AWS', 'LI LA');
