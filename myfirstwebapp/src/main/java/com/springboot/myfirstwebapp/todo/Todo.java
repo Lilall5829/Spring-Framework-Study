@@ -5,8 +5,6 @@ import java.time.LocalDate;
 //Database(MySQL)
 //Start list of todo => Database(H2, MySQL)
 
-
-
 public class Todo {
     public Todo(int id, String username, String description, LocalDate targetDate, boolean done) {
         this.id = id;
