@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student List</title>
+</head>
+<body>
+<h1>Student List</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>GPA</th>
+    </tr>
+    <tr th:each="student : ${students}">
+        <td th:text="${student.id}"></td>
+        <td th:text="${student.name}"></td>
+        <td th:text="${student.age}"></td>
+        <td th:if="${student.getClass().getSimpleName()} == 'HonorStudent'"
+            th:text="${student.gpa}"></td>
+        <td th:unless="${student.getClass().getSimpleName()} == 'HonorStudent'">N/A</td>
+    </tr>
+</table>
+</body>
+</html>
