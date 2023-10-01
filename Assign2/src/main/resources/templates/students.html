@@ -3,71 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <title>Student List</title>
+    <style>
+        #grid {
+            display: grid;
+            grid-template-rows: 200px 900px 400px;
+            grid-gap: 10px;
+        }
+
+        #grid > div {
+            background-color: #ff7b69;
+            color: white;
+            font-size: 2vw;
+            padding: 10px;
+        }
+    </style>
 </head>
 <body>
-<p>
-    GRASP (General Responsibility Assignment Software Patterns) provides principles for assigning responsibilities to
-    classes and objects in object-oriented design. It aims to promote a clear and modular design, fostering
-    maintainability and adaptability as the system evolves.
-</p>
-<ul>
-    <li>
-        a. Information Expert: The Student class holds information about individual students, including their ID, name,
-        and age. This class was chosen as the Information Expert because it naturally encapsulates the essential
-        attributes of a student.
-    </li>
-    <li>
-        b. Creator: The StudentController creates a new Student object and adds it to the StudentService. This approach
-        is better than using the main method directly because it encapsulates the creation logic within the controller,
-        promoting better separation of concerns and maintainability.
-    </li>
-    <li>
-        c. Polymorphism: Polymorphism is introduced into the application by creating multiple subclasses of the Student
-        class. And created two types of students: regular students and honor students. Honor students have an additional
-        attribute to represent their GPA. I introduced a HonorStudent subclass of Student that includes the GPA
-        attribute. The StudentService and StudentController handle both regular and honor students. In the Thymeleaf
-        template, I used polymorphism to check the type of each student and display the GPA only for honor students.
+<div id="grid">
+    <div>
+        <p>
+            GRASP (General Responsibility Assignment Software Patterns) provides principles for assigning
+            responsibilities to
+            classes and objects in object-oriented design. It aims to promote a clear and modular design, fostering
+            maintainability and adaptability as the system evolves.
+        </p>
+    </div>
+    <div>
+        <ul>
+            <li>
+                a. Information Expert: The Student class holds information about individual students, including their
+                ID,
+                name,
+                and age. This class was chosen as the Information Expert because it naturally encapsulates the essential
+                attributes of a student.
+            </li>
+            <li>
+                b. Creator: The StudentController creates a new Student object and adds it to the StudentService. This
+                approach
+                is better than using the main method directly because it encapsulates the creation logic within the
+                controller,
+                promoting better separation of concerns and maintainability.
+            </li>
+            <li>
+                c. Polymorphism: Polymorphism is introduced into the application by creating multiple subclasses of the
+                Student
+                class. And created two types of students: regular students and honor students. Honor students have an
+                additional
+                attribute to represent their GPA. I introduced a HonorStudent subclass of Student that includes the GPA
+                attribute. The StudentService and StudentController handle both regular and honor students. In the
+                Thymeleaf
+                template, I used polymorphism to check the type of each student and display the GPA only for honor
+                students.
 
-        <br>Polymorphism allows us to treat objects of different types (regular students and honor students) uniformly,
-        making the code more flexible and extensible.
-    </li>
-    <li>
-        d. Indirection: The StudentController acts as an intermediary between the user's request and the StudentService.
-        It benefits by promoting loose coupling between the controller and the service, allowing for easier unit testing
-        and potential future changes in the service layer.
-    </li>
-    <li>
-        e. Pure Fabrication: I introduced a "Course" class as an example of a pure fabrication. The "Course" class does not
-        directly represent a concept in the problem domain but is created to illustrate the concept of a pure
-        fabrication. Each student can be associated with one or more courses. The "Student" class now includes a list of
-        courses, and students can be associated with courses. The "StudentController" creates instances of students and
-        courses and associates students with courses. This demonstrates the use of a pure fabrication to model an
-        additional concept within the application that doesn't directly correspond to the problem domain.
-    </li>
-</ul>
-
-<h1>Student List</h1>
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Age</th>
-        <th>GPA</th>
-        <th>Course</th>
-    </tr>
-    <tr th:each="student : ${students}">
-        <td th:text="${student.id}"></td>
-        <td th:text="${student.name}"></td>
-        <td th:text="${student.age}"></td>
-        <td th:if="${student.getClass().getSimpleName()} == 'HonorStudent'"
-            th:text="${student.gpa}"></td>
-        <td th:unless="${student.getClass().getSimpleName()} == 'HonorStudent'">N/A</td>
-        <td>
-            <ul>
-                <li th:each="course : ${student.courses}" th:text="${course.name}"></li>
-            </ul>
-        </td>
-    </tr>
-</table>
+                <br>Polymorphism allows us to treat objects of different types (regular students and honor students)
+                uniformly,
+                making the code more flexible and extensible.
+            </li>
+            <li>
+                d. Indirection: The StudentController acts as an intermediary between the user's request and the
+                StudentService.
+                It benefits by promoting loose coupling between the controller and the service, allowing for easier unit
+                testing
+                and potential future changes in the service layer.
+            </li>
+            <li>
+                e. Pure Fabrication: I introduced a "Course" class as an example of a pure fabrication. The "Course"
+                class
+                does not
+                directly represent a concept in the problem domain but is created to illustrate the concept of a pure
+                fabrication. Each student can be associated with one or more courses. The "Student" class now includes a
+                list of
+                courses, and students can be associated with courses. The "StudentController" creates instances of
+                students
+                and
+                courses and associates students with courses. This demonstrates the use of a pure fabrication to model
+                an
+                additional concept within the application that doesn't directly correspond to the problem domain.
+            </li>
+        </ul>
+    </div>
+    <div>
+        <h1>Student List</h1>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>GPA</th>
+                <th>Course</th>
+            </tr>
+            <tr th:each="student : ${students}">
+                <td th:text="${student.id}"></td>
+                <td th:text="${student.name}"></td>
+                <td th:text="${student.age}"></td>
+                <td th:if="${student.getClass().getSimpleName()} == 'HonorStudent'"
+                    th:text="${student.gpa}"></td>
+                <td th:unless="${student.getClass().getSimpleName()} == 'HonorStudent'">N/A</td>
+                <td>
+                    <ul>
+                        <li th:each="course : ${student.courses}" th:text="${course.name}"></li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
 </body>
 </html>
