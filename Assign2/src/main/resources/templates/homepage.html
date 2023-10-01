@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Palindrome Check</title>
+    <style>
+        #grid {
+            display: grid;
+            grid-template-rows: repeat(3, 1fr);
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 10px;
+        }
+
+        #grid > div {
+            background-color: hotpink;
+            color: white;
+            font-size: 2vw;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="grid">
+    <div>
+        <h2>Palindrome Checker</h2>
+        <form method="post">
+            <label for="palindrome">Please input a palindrome:</label>
+            <input type="text" id="palindrome" name="palindrome"/>
+            <label for="submit1">
+                <br>
+                <input
+                        type="submit"
+                        id="submit1"
+                        name="submit"
+                        value="submit"
+                />
+            </label>
+            <h2>Check Result:</h2>
+            <pre th:text="${palindrome}">$</pre>
+        </form>
+    </div>
+
+    <div>
+        <h2>Substring Checker</h2>
+        <form method="post">
+            <label for="s1">Please input the first string:</label>
+            <input type="text" id="s1" name="s1"/>
+            <br>
+            <label for="s2">Please input the second string:</label>
+            <input type="text" id="s2" name="s2"/>
+            <label for="submit2">
+                <br>
+                <input
+                        type="submit"
+                        id="submit2"
+                        name="submit"
+                        value="submit"
+                />
+            </label>
+            <h2>Check Result:</h2>
+            <pre th:text="${substring}"></pre>
+        </form>
+    </div>
+
+    <div>
+        <h2>Substring(Unique Char) Checker</h2>
+        <form method="post">
+            <label for="suc1">Please input the first string:</label>
+            <input type="text" id="suc1" name="suc1"/>
+            <br>
+            <label for="suc2">Please input a unique char:</label>
+            <input type="text" id="suc2" name="suc2"/>
+            <label for="submit3">
+                <br>
+                <input
+                        type="submit"
+                        id="submit3"
+                        name="submit"
+                        value="submit"
+                />
+            </label>
+            <h2>Check Result:</h2>
+            <pre th:text="${substringUC}"></pre>
+        </form>
+    </div>
+    <div>
+        <h2>Matrix Transpose</h2>
+        <form id="matrixForm" method="post">
+            <p>Please input the matrix:</p>
+            <table>
+                <tr>
+                    <td><input type="text" name="matrix00"></td>
+                    <td><input type="text" name="matrix01"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="matrix10"></td>
+                    <td><input type="text" name="matrix11"></td>
+                </tr>
+            </table>
+            <input type="submit" value="Transpose">
+        </form>
+        <h2>Transpose Result:</h2>
+        <table>
+            <tr>
+                <td th:text="${matrix00}"></td>
+                <td th:text="${matrix01}"></td>
+            </tr>
+            <tr>
+                <td th:text="${matrix10}"></td>
+                <td th:text="${matrix11}"></td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <h2>URL Encoder</h2>
+        <form method="post">
+            <label for="url">Please input the URL:</label>
+            <input type="text" id="url" name="url"/>
+            <br>
+            <label for="submit">
+                <input
+                        type="submit"
+                        id="submit"
+                        name="submit"
+                        value="submit"
+                />
+            </label>
+            <h2>Check Result:</h2>
+            <pre th:text="${urlEncoder}"></pre>
+        </form>
+    </div>
+</div>
+</body>
+</html>

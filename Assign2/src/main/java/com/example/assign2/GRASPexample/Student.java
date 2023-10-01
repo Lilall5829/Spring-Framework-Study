@@ -1,16 +1,24 @@
 package com.example.assign2.GRASPexample;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Student {
     private Long id;
     private String name;
     private int age;
+    public List<Course> courses = new ArrayList<>();
 
     public Student(Long id, String name, int age) {
         this.id = id;
         this.name = name;
         this.age = age;
     }
-
+    public void enrollInCourse(Course course) {
+        courses.add(course);
+    }
     public Long getId() {
         return id;
     }
