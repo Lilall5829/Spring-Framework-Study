@@ -3,18 +3,19 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>Login</h2>
+<div class="container">
+    <h1>Login</h1>
     <form method="post">
         <pre>${errorMessage}</pre>
         <div>
             <label for="username">Username:</label>
-<%--            name property should be consistent with @RequestParam!!!--%>
-            <input type="text" id="username" name="name" />
+            <%--            name property should be consistent with @RequestParam!!!--%>
+            <input type="text" id="username" name="name"/>
 
         </div>
         <div>
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" />
+            <input type="password" id="password" name="password"/>
             <p></p>
         </div>
         <label for="submit">
@@ -26,5 +27,6 @@
             />
         </label>
     </form>
+</div>
 </body>
 </html>
