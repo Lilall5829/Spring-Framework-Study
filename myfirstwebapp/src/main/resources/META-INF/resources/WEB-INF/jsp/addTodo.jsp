@@ -22,15 +22,12 @@
 
     </form:form>
 </div>
-
-<script src="webjars/bootstrap/5.3.0/js/bootstrap.min.js"></script>
-<script src="webjars/jquery/3.6.4/jquery.min.js"></script>
-<script src="webjars/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js"></script>
+<%@ include file="common/footer.jspf" %>
+<%--The footer file must before the following js code block--%>
 <script type="text/javascript">
     $('#targetDate').datepicker({
         format: 'yyyy-mm-dd',
         startDate: '-3d'
     });
 </script>
-</body>
-</html>
+

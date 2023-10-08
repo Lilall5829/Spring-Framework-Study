@@ -27,11 +27,5 @@
     </table>
     <a href="add-todo" class="btn btn-success">Add todo</a>
 </div>
+<%@ include file="common/footer.jspf" %>
 
-<script src="webjars/bootstrap/5.3.0/js/bootstrap.min.js"></script>
-<script src="webjars/jquery/3.6.4/jquery.min.js"></script>
-<script src="webjars/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js"></script>
-
-
-</body>
-</html>
