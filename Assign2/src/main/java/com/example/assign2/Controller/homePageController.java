@@ -28,7 +28,7 @@ class homePageController {
         this.matrixTransposeService = matrixTransposeService;
         this.urlEncoderService = urlEncoderService;
     }
-// GET&POST request of palindrome
+    // GET&POST request of palindrome
     @RequestMapping(value = "/palindrome", method = RequestMethod.GET)
     public String palindrome() {
         return "homepage";
@@ -43,7 +43,7 @@ class homePageController {
         }
         return "homepage";
     }
-// GET&POST request of substring checker
+    // GET&POST request of substring checker
     @RequestMapping(value = "/substring", method = RequestMethod.GET)
     public String substring() {
         return "homepage";
@@ -58,7 +58,7 @@ class homePageController {
         }
         return "homepage";
     }
-// GET&POST request of substring(unique char) checker
+    // GET&POST request of substring(unique char) checker
     @RequestMapping(value = "/substringUC", method = RequestMethod.GET)
     public String substringUC() {
         return "homepage";
@@ -74,7 +74,7 @@ class homePageController {
 
         return "homepage";
     }
-// GET&POST request of transposing matrix
+    // GET&POST request of transposing matrix
     @RequestMapping(value = "/transpose", method = RequestMethod.GET)
     public String tranpose() {
         return "homepage";
@@ -89,7 +89,7 @@ class homePageController {
         model.put("matrix11", matrix[1][1]);
         return "homepage";
     }
-// GET&POST request of URL Encoder
+    // GET&POST request of URL Encoder
     @RequestMapping(value = "/ascii", method = RequestMethod.GET)
     public String urlCoder() {
         return "homepage";

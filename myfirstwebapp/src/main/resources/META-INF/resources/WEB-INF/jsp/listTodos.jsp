@@ -1,17 +1,11 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ include file="common/header.jspf" %>
 
-<html>
-<head>
-    <link href="webjars/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <title>List Todos Page</title>
-</head>
-<body>
+<%@ include file="common/navigation.jspf" %>
 <div class="container">
     <h1>Hi ${name}, your Todos</h1>
     <table class="table">
         <thead>
         <tr>
-            <th>Id</th>
             <th>Description</th>
             <th>Target Date</th>
             <th>Completed?</th>
@@ -22,7 +16,6 @@
         <tbody>
         <c:forEach items="${todos}" var="todo">
             <tr>
-                <td>${todo.id}</td>
                 <td>${todo.description}</td>
                 <td>${todo.targetDate}</td>
                 <td>${todo.done}</td>
@@ -37,6 +30,8 @@
 
 <script src="webjars/bootstrap/5.3.0/js/bootstrap.min.js"></script>
 <script src="webjars/jquery/3.6.4/jquery.min.js"></script>
+<script src="webjars/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js"></script>
+
 
 </body>
 </html>

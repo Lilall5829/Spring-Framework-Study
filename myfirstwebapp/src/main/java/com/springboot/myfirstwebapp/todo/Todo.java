@@ -1,6 +1,7 @@
 package com.springboot.myfirstwebapp.todo;
 
 import jakarta.validation.constraints.Size;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
@@ -20,7 +21,7 @@ public class Todo {
     private String username;
 //    Validation, from jakarta.validation-api
 //    Do not forget to add @Valid and Binding Result in the controller
-    @Size(min=10, message = "Enter at least 10 characters")
+    @Size(min=8, message = "Enter at least 8 characters")
     private String description;
     private LocalDate targetDate;
     private boolean done;
