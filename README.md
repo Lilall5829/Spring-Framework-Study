@@ -1,14 +1,17 @@
 # Spring-Framework-Study
 **This is my note on studying Java Spring Boot**
-## Note 1008 - Make my first web app - JSP
-* How to reduce duplicate code in JSP files?
+## Note 1008 - Make my first web app - JSP & Spring Security
+1. How to reduce duplicate code in JSP files
   * [Put them into separate JSP files, like header, navigation, footer, etc.](myfirstwebapp/src/main/resources/META-INF/resources/WEB-INF/jsp/common)
   * [And link them to other JSP files like:](myfirstwebapp/src/main/resources/META-INF/resources/WEB-INF/jsp/addTodo.jsp)
     ```
     <%@ include file="common/header.jspf" %>
 
     <%@ include file="common/navigation.jspf" %>
-    ``` 
+    ```
+2. Spring Security
+
+3. 
 ## Note 1005 - Make my first web app
 * [Project Code :point_left:](myfirstwebapp/src/main/java/com/springboot/myfirstwebapp)
 * [How to validate user's input? :point_left:](myfirstwebapp/src/main/java/com/springboot/myfirstwebapp/todo/Todo.java)
