@@ -4,7 +4,7 @@
 1. How to reduce duplicate code in JSP files
    - [Put them into separate JSP files, like header, navigation, footer, etc.](myfirstwebapp/src/main/resources/META-INF/resources/WEB-INF/jsp/common)
    - [And link them to other JSP files like:](myfirstwebapp/src/main/resources/META-INF/resources/WEB-INF/jsp/addTodo.jsp)
-    ```
+    ```jsp
     <%@ include file="common/header.jspf" %>
 
     <%@ include file="common/navigation.jspf" %>
@@ -19,7 +19,7 @@
    This generated password is for development use only. Your security configuration must be updated before running your application in production.
    ```
    - Add dependency on Spring Security
-    ```
+    ```xml
     <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-security</artifactId>
@@ -29,7 +29,7 @@
 
 3. Add JPA and H2 Database
    - Add dependency on JPA
-   ```
+   ```xml
    <dependency>
        <groupId>org.springframework.boot</groupId>
        <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -43,6 +43,19 @@
 5. Start H2
    - The URL of starting H2 is `http://localhost:8080/h2-console`
    - Add JDBC URL to [application.properties](myfirstwebapp/src/main/resources/application.properties):`spring.datasource.url=jdbc:h2:mem:testdb`. This URL will be inputted on the login page
+   - Set some [security config](myfirstwebapp/src/main/java/com/springboot/myfirstwebapp/security/SpringSecurityConfiguration.java)
+     ```java
+      @Bean 
+      public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+         http.authorizeHttpRequests(
+                auth -> auth.anyRequest().authenticated());
+         //Don't forget to import Customizer.withDefaults!
+         http.formLogin(withDefaults());
+         http.csrf().disable();
+         http.headers().frameOptions().disable();
+         return http.build();
+      }
+     ```
 
     
 ## Note 1005 - Make my first web app
