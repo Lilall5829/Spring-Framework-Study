@@ -1,5 +1,32 @@
 # Spring-Framework-Study
 **This is my note on studying Java Spring Boot**
+## Note 1008 - Make my first web app P105-P104
+1. Mapping [Todo data](myfirstwebapp/src/main/java/com/springboot/myfirstwebapp/todo/Todo.java) to database by `@Entitiy`, `@Id`, `@GeneratedValue` and `@Column`.
+   ```java
+   @Entity(name = "TodoABC") //Rename your table in h2 database
+   public class Todo {
+       public Todo(int id, String username, String description, LocalDate targetDate, boolean done) {
+           this.id = id;
+           this.username = username;
+           this.description = description;
+           this.targetDate = targetDate;
+           this.done = done;
+       }
+       @Id
+       @GeneratedValue
+       private int id;
+       @Column(name="name") //Rename your column in h2 database
+       private String username;
+   ```
+2. Populate data to start off
+   - [Create an SQL file](myfirstwebapp/src/main/resources/data.sql)
+   - [Set app properties:](myfirstwebapp/src/main/resources/application.properties) `spring.jpa.defer-datasource-initialization=true` Make sure the SQL will execute after the table is created, or there will be an error.
+
+3. Create an interface as [repository]()
+   
+     
+  
+
 ## Note 1008 - Make my first web app P98-P104
 1. How to reduce duplicate code in JSP files
    - [Put them into separate JSP files, like header, navigation, footer, etc.](myfirstwebapp/src/main/resources/META-INF/resources/WEB-INF/jsp/common)
