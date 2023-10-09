@@ -1,6 +1,6 @@
 # Spring-Framework-Study
 **This is my note on studying Java Spring Boot**
-## Note 1008 - Make my first web app P98-P
+## Note 1008 - Make my first web app P98-P104
 1. How to reduce duplicate code in JSP files
    - [Put them into separate JSP files, like header, navigation, footer, etc.](myfirstwebapp/src/main/resources/META-INF/resources/WEB-INF/jsp/common)
    - [And link them to other JSP files like:](myfirstwebapp/src/main/resources/META-INF/resources/WEB-INF/jsp/addTodo.jsp)
