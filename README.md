@@ -1,17 +1,50 @@
 # Spring-Framework-Study
 **This is my note on studying Java Spring Boot**
-## Note 1008 - Make my first web app - JSP & Spring Security
+## Note 1008 - Make my first web app P98-P
 1. How to reduce duplicate code in JSP files
-  * [Put them into separate JSP files, like header, navigation, footer, etc.](myfirstwebapp/src/main/resources/META-INF/resources/WEB-INF/jsp/common)
-  * [And link them to other JSP files like:](myfirstwebapp/src/main/resources/META-INF/resources/WEB-INF/jsp/addTodo.jsp)
+   - [Put them into separate JSP files, like header, navigation, footer, etc.](myfirstwebapp/src/main/resources/META-INF/resources/WEB-INF/jsp/common)
+   - [And link them to other JSP files like:](myfirstwebapp/src/main/resources/META-INF/resources/WEB-INF/jsp/addTodo.jsp)
     ```
     <%@ include file="common/header.jspf" %>
 
     <%@ include file="common/navigation.jspf" %>
     ```
-2. Spring Security
+2. Spring Security and set new users
+   
+   There will automatically generate a login page. So, you need to log in before using the app.
 
-3. 
+   The user name is "user," and the password will differ every time you log in. It will be shown in the log information in the console like:
+   ```
+   Using generated security password: xxxxxx-xxxx-xxxx-xxxx-xxxxxx
+   This generated password is for development use only. Your security configuration must be updated before running your application in production.
+   ```
+   - Add dependency on Spring Security
+    ```
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
+    ```
+    - Set your own users and passwords: Create [SpringSecurityConfiguration](myfirstwebapp/src/main/java/com/springboot/myfirstwebapp/security/SpringSecurityConfiguration.java) and [WelcomeController](myfirstwebapp/src/main/java/com/springboot/myfirstwebapp/login/WelcomeController.java)
+
+3. Add JPA and H2 Database
+   - Add dependency on JPA
+   ```
+   <dependency>
+       <groupId>org.springframework.boot</groupId>
+       <artifactId>spring-boot-starter-data-jpa</artifactId>
+   </dependency>
+   <dependency>
+       <groupId>com.h2database</groupId>
+       <artifactId>h2</artifactId>
+       <scope>runtime</scope>
+   </dependency>
+   ```
+5. Start H2
+   - The URL of starting H2 is `http://localhost:8080/h2-console`
+   - Add JDBC URL to [application.properties](myfirstwebapp/src/main/resources/application.properties):`spring.datasource.url=jdbc:h2:mem:testdb`. This URL will be inputted on the login page
+
+    
 ## Note 1005 - Make my first web app
 * [Project Code :point_left:](myfirstwebapp/src/main/java/com/springboot/myfirstwebapp)
 * [How to validate user's input? :point_left:](myfirstwebapp/src/main/java/com/springboot/myfirstwebapp/todo/Todo.java)
