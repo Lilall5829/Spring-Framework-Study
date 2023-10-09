@@ -26,6 +26,7 @@
 4. Use some methods of `todoRepository`
 5. [Install and set Docker](02.Spring-Boot-Web-Application-V2)
    - [How to fix the error: docker: Error response from daemon: Ports are not available: exposing port TCP 0.0.0.0:3306 -> 0.0.0.0:0: listen tcp 0.0.0.0:3306: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.](https://www.dark-hamster.com/application/how-to-solve-error-message-error-response-from-daemon-ports-are-not-available-exposing-port-tcp-when-running-docker-compose-in-microsoft-windows/)
+   - Before using MySQL, we need comment on the dependency of h2 database
    
      
   
