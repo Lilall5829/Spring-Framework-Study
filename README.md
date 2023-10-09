@@ -1,6 +1,6 @@
 # Spring-Framework-Study
 **This is my note on studying Java Spring Boot**
-## Note 1008 - Make my first web app P105-P104
+## Note 1009 - Make my first web app P105-P104
 1. Mapping [Todo data](myfirstwebapp/src/main/java/com/springboot/myfirstwebapp/todo/Todo.java) to database by `@Entitiy`, `@Id`, `@GeneratedValue` and `@Column`.
    ```java
    @Entity(name = "TodoABC") //Rename your table in h2 database
@@ -22,7 +22,8 @@
    - [Create an SQL file](myfirstwebapp/src/main/resources/data.sql)
    - [Set app properties:](myfirstwebapp/src/main/resources/application.properties) `spring.jpa.defer-datasource-initialization=true` Make sure the SQL will execute after the table is created, or there will be an error.
 
-3. Create an interface as [repository]()
+3. Create an interface as [TodoRepository](myfirstwebapp/src/main/java/com/springboot/myfirstwebapp/todo/TodoRepository.java) and [a new controller of JPA](myfirstwebapp/src/main/java/com/springboot/myfirstwebapp/todo/TodoControllerJPA.java). And comment on the `@Controller` of the old controller.
+4. Use some methods of `todoRepository`
    
      
   
