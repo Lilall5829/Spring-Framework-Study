@@ -11,7 +11,7 @@
     ```
 2. Spring Security and set new users
    
-   There will automatically generate a login page. So, you need to log in before using the app.
+   There will automatically generate a login page. All URLs are protected by Spring Security. So, you need to log in before using the app.
 
    The user name is "user," and the password will differ every time you log in. It will be shown in the log information in the console like:
    ```
