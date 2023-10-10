@@ -1,6 +1,10 @@
 # Spring-Framework-Study
 **This is my note on studying Java Spring Boot**
-## Note 1009 - Make my first web app P105-P104
+## Note 1010 - REST API P112-P113
+1. Create a new project. Add 4 dependencies: Spring Web, Spring Data JPA, H2 Database, and Spring Boot DevTools.
+2. Create a [Controller](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/helloworld/HelloWorldController.java) and [Bean class](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/helloworld/HelloWorldBean.java)
+
+## Note 1009 - Make my first web app P105-P111
 1. Mapping [Todo data](myfirstwebapp/src/main/java/com/springboot/myfirstwebapp/todo/Todo.java) to database by `@Entitiy`, `@Id`, `@GeneratedValue` and `@Column`.
    ```java
    @Entity(name = "TodoABC") //Rename your table in h2 database
