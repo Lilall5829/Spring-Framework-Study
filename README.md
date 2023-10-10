@@ -26,7 +26,29 @@
 4. Use some methods of `todoRepository`
 5. [Install and set Docker](02.Spring-Boot-Web-Application-V2)
    - [How to fix the error: docker: Error response from daemon: Ports are not available: exposing port TCP 0.0.0.0:3306 -> 0.0.0.0:0: listen tcp 0.0.0.0:3306: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.](https://www.dark-hamster.com/application/how-to-solve-error-message-error-response-from-daemon-ports-are-not-available-exposing-port-tcp-when-running-docker-compose-in-microsoft-windows/)
-   - Before using MySQL, we need comment on the dependency of h2 database
+   - Before using MySQL, we need to comment on the dependency and the application properties of h2 database and add new dependency:
+    ```
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>8.0.33</version>
+    </dependency>
+    ```
+    - Add new applcation properties:
+      ```
+      #The following values come from the command of initializing Docker
+      spring.datasource.url=jdbc:mysql://localhost:3306/todos
+      spring.datasource.username=todos-user
+      spring.datasource.password=dummytodos
+      #The following values come from MySQL8Dialect(double click shift and search it)
+      spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+      #The following code makes JPA create a table automatically
+      spring.jpa.hibernate.ddl-auto=update
+      ```
+6. Open MySql Shell and input `\connect todos-user@localhost:3306`
+   - Set the schema to todos by `\use todos`
+   - Use SQL by `\sql`
+     Then you can write some SQL queries.
    
      
   
