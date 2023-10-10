@@ -47,7 +47,8 @@
       ```
 6. Open MySql Shell and input `\connect todos-user@localhost:3306`
    - Set the schema to todos by `\use todos`
-   - Use SQL by `\sql`
+   - Switch to SQL mode by `\sql`
+     
      Then you can write some SQL queries.
    
      
