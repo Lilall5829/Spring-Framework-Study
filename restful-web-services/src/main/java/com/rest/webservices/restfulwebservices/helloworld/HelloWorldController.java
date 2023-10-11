@@ -1,6 +1,7 @@
 package com.rest.webservices.restfulwebservices.helloworld;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 //REST API
@@ -19,6 +20,11 @@ public class HelloWorldController {
     @GetMapping(path = "/hello-world-Bean")
     public HelloWorldBean helloworldBean(){
         return new HelloWorldBean("Hello World");
+    }
+    // I want to pass "lila" to the path variable "name"
+    @GetMapping(path = "/hello-world/path-variable/{name}")
+    public HelloWorldBean helloworldPathVariable(@PathVariable String name){
+        return new HelloWorldBean(String.format("Hello world, %s", name));
     }
 
 }
