@@ -16,7 +16,7 @@ Use Taland API Tester to test POST request
    - [Service](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/user/UserDaoService.java)
    - [Exceptions class](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/user/UserNotFoundException.java)
 
-5. [return a proper error structure(time stamp, error message, and details) and id if the user doesn't exist.](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/exception)
+5. [Return a proper error structure(time stamp, error message, and details) and id if the user doesn't exist.](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/exception)
    
 
 
