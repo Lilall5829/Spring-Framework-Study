@@ -1,6 +1,30 @@
 # Spring-Framework-Study
 **This is my note on studying Java Spring Boot**
-## Note 1010 - REST API P112-P116
+
+## Note 1010 - REST API P120-P1
+Use Taland API Tester to test POST request
+
+1. Google "Taland API Tester" plugin and install it
+2. Use it to test a POST request:
+
+   ![7](https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/2e448918-a9a5-412b-98b2-68a7782119c5)
+3. Location of new user:
+
+   ![8](https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/1d274962-d64e-49c1-b616-cbc290215018)
+
+4. How to handle exceptions:
+   - [Service](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/user/UserDaoService.java)
+   - [Exceptions class](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/user/UserNotFoundException.java)
+
+5. [return a proper error structure(time stamp, error message, and details) and id if the user doesn't exist.](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/exception)
+   
+
+
+
+   
+
+
+## Note 1010 - REST API P112-P119
 1. Create a new project. Add 4 dependencies: Spring Web, Spring Data JPA, H2 Database, and Spring Boot DevTools.
 2. Create a [Controller](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/helloworld/HelloWorldController.java) and [Bean class](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/helloworld/HelloWorldBean.java).
 3. Some questions:
