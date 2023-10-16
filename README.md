@@ -1,6 +1,6 @@
 # Spring-Framework-Study
 **This is my note on studying Java Spring Boot**
-## Note 1015 - REST API P126-P1
+## Note 1015 - REST API P126-P132
 Add validations to the fields of REST API
 1. Add dependency
   ```xml
@@ -52,7 +52,7 @@ Internationalization - i18n
     ![15](https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/d2a76de2-3f67-4be8-b12e-552f676dc66a)
 
 
-## Note 1012 - REST API P120-P125
+## Note 1011 - REST API P120-P125
 
 **[HTTP response status codes ](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status#server_error_responses)** 👈
 
