@@ -48,7 +48,7 @@ Internationalization - i18n
 1. Accept-Language: indicates natural language and **locale** that the consumer prefers. Example: en - English
 2. [Add internationalized method](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/helloworld/HelloWorldController.java)
 3. [Create messages.properties(EN)](restful-web-services/src/main/resources/messages.properties):`good.morning.message = Good Morning`
-4. [Create messages_nl.properties(NL)](restful-web-services/src/main/resources/messages_nl.properties):`good.morning.message = Goedemorgen`, and add http headers:
+4. [Create messages_nl.properties(NL)](restful-web-services/src/main/resources/messages_nl.properties):`good.morning.message = Goedemorgen`, and add HTTP headers. The result will be Dutch:
     ![15](https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/d2a76de2-3f67-4be8-b12e-552f676dc66a)
 
 
