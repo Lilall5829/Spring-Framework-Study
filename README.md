@@ -1,5 +1,40 @@
 # Spring-Framework-Study
 **This is my note on studying Java Spring Boot**
+
+## Note 1016 - REST API P133-P13
+Versioning REST API
+1. URI Versioning - Twitter
+  ```
+  http://localhost:8080/v1/person
+  http://localhost:8080/v2/person
+  ```
+
+- Create [versioning controller](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/versioning/VersioningPersonController.java), [v1(output "name")](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/versioning/PersonV1.java), [v2(output "firstname" and "lastname")](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/versioning/PersonV2.java)
+
+2. Request Parameter versioning - Amazon
+  ```
+  http://localhost:8080/person?version=1
+  http://localhost:8080/person?version=2
+  ```
+3. (Custom) header versioning - Microsoft
+
+   ![16](https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/2349427a-4a79-40f1-94da-7c881482cad5)
+
+4. Media type versioning(a.k.a "content negotiation" or "accept header") - Github
+
+   ![17](https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/e1f4d626-8b60-4e13-98dd-ea55fbb07f5d)
+
+5. Summary
+
+   <img width="506" alt="18" src="https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/14dfde14-192a-4d65-aab9-c79dcfdedc32">
+
+HATEOAS
+
+
+
+   
+
+
 ## Note 1015 - REST API P126-P132
 Add validations to the fields of REST API
 1. Add dependency
