@@ -22,11 +22,11 @@ public class SpringSecurityConfiguration {
     public InMemoryUserDetailsManager createUserDetailsManager(){
         //Encode the password
 //        Inline username and password to createNewUser: select the variable name and right click choose the Refactor -> Inline variable or using shortcut ctrl + alt + N
-//        String username = "in28minutes";
+//        String username = "leo";
 //        String password = "123";
         //Click "passwordEncoder" to create the local lambda function above
         //Introduce the username and password to variables and extract the following code to a method
-        UserDetails userDetails1 = createNewUser("in28minutes", "123");
+        UserDetails userDetails1 = createNewUser("leo", "123");
         UserDetails userDetails2 = createNewUser("lila", "123");
 
         return new InMemoryUserDetailsManager(userDetails1, userDetails2);

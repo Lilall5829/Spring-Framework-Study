@@ -1,5 +1,6 @@
 package com.rest.webservices.restfulwebservices.user;
 
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -33,10 +34,18 @@ public class UserResource {
         return user;
     }
 
+    //Delete
+    @DeleteMapping("/users/{id}")
+    //@PathVariable is different from @RequestParam. Pay attention to use them!
+    public void deleteUser(@PathVariable int id){
+        userDaoService.deleteById(id);
+    }
+
     //POST /users
     @PostMapping("/users")
     //Make this method to response of POST status, it should return 201
-    public ResponseEntity<User> createUser(@RequestBody User user){
+    //Add @Valid
+    public ResponseEntity<User> createUser(@Valid @RequestBody User user){
         User savedUser = userDaoService.save(user);
         //location - /users/4
         URI localtion = ServletUriComponentsBuilder.fromCurrentRequest()

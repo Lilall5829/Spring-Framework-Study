@@ -8,7 +8,7 @@
         <tr>
             <th>Description</th>
             <th>Target Date</th>
-            <th>Completed?</th>
+            <th>Status</th>
             <th></th>
             <th></th>
         </tr>

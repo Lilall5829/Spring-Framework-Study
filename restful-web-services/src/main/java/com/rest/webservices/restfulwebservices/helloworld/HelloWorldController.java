@@ -26,5 +26,10 @@ public class HelloWorldController {
     public HelloWorldBean helloworldPathVariable(@PathVariable String name){
         return new HelloWorldBean(String.format("Hello world, %s", name));
     }
+// Internationalized
+    @GetMapping(path = "/hello-world-internationalized")
+    public String helloworldInternationalized(){
+        return "Hello World";
+    }
 
 }

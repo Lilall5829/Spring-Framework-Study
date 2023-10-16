@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
-@Service
+@Service// This service was deprecated!!!
 public class TodoService {
     //Initialize todos
     private static List<Todo> todos = new ArrayList<>();

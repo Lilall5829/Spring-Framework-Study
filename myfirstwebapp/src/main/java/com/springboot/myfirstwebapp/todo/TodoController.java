@@ -13,7 +13,7 @@ import java.util.List;
 
 //import static com.sun.beans.introspect.PropertyInfo.Name.description;
 
-//@Controller
+//@Controller This controller was deprecated!!!
 @SessionAttributes("name")
 
 public class TodoController {
