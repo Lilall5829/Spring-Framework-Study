@@ -1,7 +1,42 @@
 # Spring-Framework-Study
 **This is my note on studying Java Spring Boot**
+
+## Note 1016 - REST API P133-P13
+### Versioning REST API
+1. URI Versioning - Twitter
+  ```
+  http://localhost:8080/v1/person
+  http://localhost:8080/v2/person
+  ```
+
+- Create [versioning controller](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/versioning/VersioningPersonController.java), [v1(output "name")](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/versioning/PersonV1.java), [v2(output "firstname" and "lastname")](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/versioning/PersonV2.java)
+
+2. Request Parameter versioning - Amazon
+  ```
+  http://localhost:8080/person?version=1
+  http://localhost:8080/person?version=2
+  ```
+3. (Custom) header versioning - Microsoft
+
+   ![16](https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/2349427a-4a79-40f1-94da-7c881482cad5)
+
+4. Media type versioning(a.k.a "content negotiation" or "accept header") - Github
+
+   ![17](https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/e1f4d626-8b60-4e13-98dd-ea55fbb07f5d)
+
+5. Summary
+
+   <img width="506" alt="18" src="https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/14dfde14-192a-4d65-aab9-c79dcfdedc32">
+
+### HATEOAS
+
+
+
+   
+
+
 ## Note 1015 - REST API P126-P132
-Add validations to the fields of REST API
+### Add validations to the fields of REST API
 1. Add dependency
   ```xml
      <dependency>
@@ -15,7 +50,7 @@ Add validations to the fields of REST API
 
    ![11](https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/717d3a21-6202-46ce-860c-30655d35dbb2)
 
-REST API Documentation - Swagger and Open API
+### REST API Documentation - Swagger and Open API
 1. Add [OpenAPI dependency](https://github.com/springdoc/springdoc-openapi/blob/main/springdoc-openapi-starter-webmvc-ui/pom.xml)
    ```xml
        <dependency>
@@ -32,7 +67,7 @@ REST API Documentation - Swagger and Open API
 
    ![13](https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/412d5700-efcf-4fed-bc18-550c28f8194d)
 
-Content Negotiation
+### Content Negotiation
 1. Add dependency
    ```xml
        <dependency>
@@ -43,7 +78,7 @@ Content Negotiation
 2. Add headers, assume that we want to display the http body in XML format:
   ![14](https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/fdb8fef9-5006-4c0a-b3b7-fd48aae20455)
 
-Internationalization - i18n
+### Internationalization - i18n
 
 1. Accept-Language: indicates natural language and **locale** that the consumer prefers. Example: en - English
 2. [Add internationalized method](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/helloworld/HelloWorldController.java)
@@ -56,7 +91,7 @@ Internationalization - i18n
 
 **[HTTP response status codes ](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status#server_error_responses)** 👈
 
-Use Talend API Tester to test POST request
+### Use Talend API Tester to test POST request
 
 1. Google "Taland API Tester" plugin and install it
 2. Use it to test a POST request:
@@ -238,7 +273,7 @@ Use Talend API Tester to test POST request
 ## Note 0921 - Git commands
 `git commit -am "commit message"` is the shortcut of commit + add but only for modifying file, not for creating a new file.
 
-How to make a branch? Such as a branch named "feature-1"? 
+### How to make a branch? Such as a branch named "feature-1"? 
 
 * Use `git checkout` to switch between the different branches.
 
