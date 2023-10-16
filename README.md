@@ -28,10 +28,28 @@ REST API Documentation - Swagger and Open API
 
    ![12](https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/2807a08a-a642-4459-8518-ee03f99975db)
 
-3. `http://localhost:8080/v3/api-docs` shows API document as Json formate:
+3. `http://localhost:8080/v3/api-docs` shows API document in Json format:
 
    ![13](https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/412d5700-efcf-4fed-bc18-550c28f8194d)
 
+Content Negotiation
+1. Add dependency
+   ```xml
+       <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-xml</artifactId>
+       </dependency>
+   ```
+2. Add headers, assume that we want to display the http body in XML format:
+  ![14](https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/fdb8fef9-5006-4c0a-b3b7-fd48aae20455)
+
+Internationalization - i18n
+
+1. Accept-Language: indicates natural language and **locale** that the consumer prefers. Example: en - English
+2. [Add internationalized method](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/helloworld/HelloWorldController.java)
+3. [Create messages.properties(EN)](restful-web-services/src/main/resources/messages.properties):`good.morning.message = Good Morning`
+4. [Create messages_nl.properties(NL)](restful-web-services/src/main/resources/messages_nl.properties):`good.morning.message = Goedemorgen`, and add http headers:
+    ![15](https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/d2a76de2-3f67-4be8-b12e-552f676dc66a)
 
 
 ## Note 1012 - REST API P120-P125
