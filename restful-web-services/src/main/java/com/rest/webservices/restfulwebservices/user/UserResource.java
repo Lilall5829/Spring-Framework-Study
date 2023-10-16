@@ -1,6 +1,9 @@
 package com.rest.webservices.restfulwebservices.user;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 import jakarta.validation.Valid;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -23,17 +26,33 @@ public class UserResource {
     }
 
     //GET /users/1
+//    @GetMapping("/users/{id}")
+//    //@PathVariable is different from @RequestParam. Pay attention to use them!
+//    public User retrieveUser(@PathVariable int id){
+//        User user = userDaoService.findById(id);
+//        if (user == null)
+//            //UserNotFoundException extends RuntimeException class
+//            throw new UserNotFoundException("id:" + id);
+////        return userDaoService.findById(id);
+//        return user;
+//    }
+
+
+    // HATEOAS
+    // EntityModel and WebMvcLinkBuilder
     @GetMapping("/users/{id}")
-    //@PathVariable is different from @RequestParam. Pay attention to use them!
-    public User retrieveUser(@PathVariable int id){
+    public EntityModel<User> retrieveUser(@PathVariable int id){
         User user = userDaoService.findById(id);
         if (user == null)
-            //UserNotFoundException extends RuntimeException class
             throw new UserNotFoundException("id:" + id);
-//        return userDaoService.findById(id);
-        return user;
+        // Wrap the User, create an EntityModel
+        EntityModel<User> entityModel = EntityModel.of(user);
+        // Use WebMvcLinkBuilder to create a link
+        WebMvcLinkBuilder link = linkTo(methodOn(this.getClass()).retrieveAllUsers());
+        // Add the link to the EntityModel
+        entityModel.add(link.withRel("all-users"));
+        return entityModel;
     }
-
     //Delete
     @DeleteMapping("/users/{id}")
     //@PathVariable is different from @RequestParam. Pay attention to use them!
