@@ -1,6 +1,67 @@
 # Spring-Framework-Study
 **This is my note on studying Java Spring Boot**
-## Note 1010 - REST API P112-P116
+## Note 1015 - REST API P126-P1
+Add validations to the fields of REST API
+1. Add dependency
+  ```xml
+     <dependency>
+         <groupId>org.springframework.boot</groupId>
+         <artifactId>spring-boot-starter-validation</artifactId>
+     </dependency>
+  ```
+2. Add `@Valid` at [UserResource](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/user/UserResource.java)
+3. Add `@Size` and `@Past` at the name and LocalDate fields in [User](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/user/User.java)
+4. Add and **override** method `handleMethodArgumentNotValid()` to [customized exception handler](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/exception/CustomizedResponseEntityExceptionHandler.java) and show the customized exception information.
+
+   ![11](https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/717d3a21-6202-46ce-860c-30655d35dbb2)
+
+REST API Documentation - Swagger and Open API
+1. Add [OpenAPI dependency](https://github.com/springdoc/springdoc-openapi/blob/main/springdoc-openapi-starter-webmvc-ui/pom.xml)
+   ```xml
+       <dependency>
+           <groupId>org.springdoc</groupId>
+           <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+           <version>2.1.0</version>
+       </dependency>
+   ```
+2. Go to `http://localhost:8080/swagger-ui/index.html`. It shows details of your REST APIs and you can also execute and test them:
+
+   ![12](https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/2807a08a-a642-4459-8518-ee03f99975db)
+
+3. `http://localhost:8080/v3/api-docs` shows API document as Json formate:
+
+   ![13](https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/412d5700-efcf-4fed-bc18-550c28f8194d)
+
+
+
+## Note 1012 - REST API P120-P125
+
+**[HTTP response status codes ](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status#server_error_responses)** 👈
+
+Use Talend API Tester to test POST request
+
+1. Google "Taland API Tester" plugin and install it
+2. Use it to test a POST request:
+
+   ![7](https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/2e448918-a9a5-412b-98b2-68a7782119c5)
+3. Location of new user:
+
+   ![8](https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/1d274962-d64e-49c1-b616-cbc290215018)
+
+4. How to handle exceptions:
+   - [Service](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/user/UserDaoService.java)
+   - [Exceptions class](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/user/UserNotFoundException.java)
+
+5. [Return a proper error structure(time stamp, error message, and details) for developer or user if the user id doesn't exist.](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/exception)
+
+   
+
+
+
+   
+
+
+## Note 1010 - REST API P112-P119
 1. Create a new project. Add 4 dependencies: Spring Web, Spring Data JPA, H2 Database, and Spring Boot DevTools.
 2. Create a [Controller](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/helloworld/HelloWorldController.java) and [Bean class](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/helloworld/HelloWorldBean.java).
 3. Some questions:
@@ -32,7 +93,7 @@
 
 3. Create an interface as [TodoRepository](myfirstwebapp/src/main/java/com/springboot/myfirstwebapp/todo/TodoRepository.java) and [a new controller of JPA](myfirstwebapp/src/main/java/com/springboot/myfirstwebapp/todo/TodoControllerJPA.java). And comment on the `@Controller` of the old controller.
 4. Use some methods of `todoRepository`
-5. [Install and set Docker](02.Spring-Boot-Web-Application-V2)
+5. [Install and set Docker](https://github.com/in28minutes/spring-boot-master-class/tree/master/02.Spring-Boot-Web-Application-V2#docker)
    - [How to fix the error: docker: Error response from daemon: Ports are not available: exposing port TCP 0.0.0.0:3306 -> 0.0.0.0:0: listen tcp 0.0.0.0:3306: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.](https://www.dark-hamster.com/application/how-to-solve-error-message-error-response-from-daemon-ports-are-not-available-exposing-port-tcp-when-running-docker-compose-in-microsoft-windows/)
    - Before using MySQL, we need to comment on the dependency and the application properties of h2 database and add new dependency:
     ```
@@ -55,9 +116,16 @@
       ```
 6. Open MySql Shell and input `\connect todos-user@localhost:3306`
    - Set the schema to todos by `\use todos`
-   - Switch to SQL mode by `\sql`
+   - Switch to SQL mode by `\sql`     
+   - Then you can write some SQL queries.
      
-     Then you can write some SQL queries.
+     ![9](https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/666d9e51-2095-4b51-8fc7-9209073f9ff0)
+
+     ![10](https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/07eb889d-a244-4db1-9384-c3a3c08474b9)
+
+
+     
+     
    
      
   
