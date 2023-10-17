@@ -1,11 +1,14 @@
 package com.rest.webservices.restfulwebservices.filtering;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+@JsonFilter("SomeBeanFilter") //Should match with FilterProvider filters of Controller
+//@JsonIgnoreProperties("field1")
 public class SomeBean {
     private String field1;
     // Asssume field2 is password, we don't want to response it
-    @JsonIgnore
+//    @JsonIgnore //Preference
     private String field2;
     private String field3;
 
