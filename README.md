@@ -1,6 +1,6 @@
 # Spring-Framework-Study
 **This is my note on studying Java Spring Boot**
-## Note 1017 - REST API P137-P1
+## Note 1017 - REST API P137-P139
 ### Spring Boot Actuator
 
    It helps us monitor and manage our application
