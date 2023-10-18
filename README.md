@@ -1,7 +1,42 @@
 # Spring-Framework-Study
 **This is my note on studying Java Spring Boot**
+## Note 1017 - REST API P137-P139
+### Spring Boot Actuator
 
-## Note 1016 - REST API P133-P13
+   It helps us monitor and manage our application
+   1. Add the dependency and add `management.endpoints.web.exposure.include=*` to application.properties
+      
+       ```xml
+       <dependency>
+           <groupId>org.springframework.boot</groupId>
+           <artifactId>spring-boot-starter-actuator</artifactId>
+       </dependency>
+       ```
+     
+   2. Go to `http://localhost:8080/actuator` and find more details, such as `http://localhost:8080/actuator/metrics/http.server.requests`.
+
+### HAL Explorer
+
+  <img width="636" alt="21" src="https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/3a9b3f65-ea49-4cef-a264-d494b444a52f">
+  
+  1. Add the dependency and add `management.endpoints.web.exposure.include=*` to application.properties.
+
+     ```xml
+     <dependency>
+         <groupId>org.springframework.data</groupId>
+         <artifactId>spring-data-rest-hal-explorer</artifactId>
+     </dependency>
+     ```
+     
+  2. Go to `http://localhost:8080/explorer/` and find more details:
+      
+      ![22](https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/90542993-011b-4e00-bded-20f4c2e9a3f1)
+
+### Connect REST API to database
+
+
+
+## Note 1016 - REST API P133-P136
 ### Versioning REST API
 1. URI Versioning - Twitter
   ```
@@ -9,7 +44,7 @@
   http://localhost:8080/v2/person
   ```
 
-- Create [versioning controller](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/versioning/VersioningPersonController.java), [v1(output "name")](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/versioning/PersonV1.java), [v2(output "firstname" and "lastname")](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/versioning/PersonV2.java)
+- Create [versioning controller](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/versioning/VersioningPersonController.java), [v1(outputs "name")](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/versioning/PersonV1.java), [v2(outputs "firstname" and "lastname")](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/versioning/PersonV2.java)
 
 2. Request Parameter versioning - Amazon
   ```
@@ -29,10 +64,62 @@
    <img width="506" alt="18" src="https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/14dfde14-192a-4d65-aab9-c79dcfdedc32">
 
 ### HATEOAS
+<img width="626" alt="19" src="https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/71c89d95-b004-4449-b675-290c1f26d4bc">
 
-
-
+1. Add dependency
+    ```
+     <dependency>
+         <groupId>org.springframework.boot</groupId>
+         <artifactId>spring-boot-starter-hateoas</artifactId>
+     </dependency>
+    ```
+  
+2. Modify the [controller](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/user/UserResource.java)
    
+    ```java
+    // HATEOAS
+      // EntityModel and WebMvcLinkBuilder
+      @GetMapping("/users/{id}")
+      public EntityModel<User> retrieveUser(@PathVariable int id){
+          User user = userDaoService.findById(id);
+          if (user == null)
+              throw new UserNotFoundException("id:" + id);
+          // Wrap the User, create an EntityModel
+          EntityModel<User> entityModel = EntityModel.of(user);
+          // Use WebMvcLinkBuilder to create a link
+          WebMvcLinkBuilder link = linkTo(methodOn(this.getClass()).retrieveAllUsers());
+          // Add the link to the EntityModel
+          entityModel.add(link.withRel("all-users"));
+          return entityModel;
+      }
+      ```
+
+### Serialization
+1. Customize field names in response - Add `@JsonProperty` to [data fields](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/user/User.java)
+
+  
+2. Return only selected fields - filtering
+   
+   <img width="485" alt="20" src="https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/b8830329-d946-4cb7-badb-5fd56b769306">
+
+   - Static Filtering: add `@JsonIgnore` or `@JsonIgnoreProperties` in the [Bean](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/filtering/SomeBean.java). And it also works on [List](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/filtering/FilteringController.java)
+   - Dynamic Filtering: add `@JsonFilter("SomeBeanFilter")` in the [Bean](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/filtering/SomeBean.java). Notice, the property "SomeBeanFilter" should match with "FilterProvider filters" of Controller. And modify [controller](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/filtering/FilteringController.java) as following:
+     ```java
+     // Dynamic filtering: MappingJacksonValue
+     @GetMapping("/filtering")
+     public MappingJacksonValue filtering(){
+         SomeBean someBean = new SomeBean("value1","value2","value3");
+
+         MappingJacksonValue mappingJacksonValue = new MappingJacksonValue(someBean);
+         //filter setting, only allows field1 and field3
+         SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter.filterOutAllExcept("field1","field3");
+         FilterProvider filters = new SimpleFilterProvider().addFilter("SomeBeanFilter", filter);
+
+         mappingJacksonValue.setFilters(filters);
+         return mappingJacksonValue;
+     }
+     ```
+
 
 
 ## Note 1015 - REST API P126-P132
