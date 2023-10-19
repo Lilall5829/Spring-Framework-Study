@@ -1,6 +1,6 @@
 # Spring-Framework-Study
 **This is my note on studying Java Spring Boot**
-## Note 1019 - REST API P143-P150
+## Note 1019 - REST API P143-P151
 ### JPA - Retrieve Posts for users
    1. [Add getters and setters in the User class for Post](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/user/User.java)
    2. [Add get mapping of retrieving posts for user(By id)](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/user/UserJpaResource.java)
