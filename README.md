@@ -1,8 +1,47 @@
 # Spring-Framework-Study
 **This is my note on studying Java Spring Boot**
+## Note 1019 - REST API P143-P142
+### JPA - Retrieve Posts for users
+   1. [Add getters and setters in the User class for Post](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/user/User.java)
+   2. [Add get mapping of retrieving posts for user(By id)](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/user/UserJpaResource.java)
+      
+       ```java
+       // Retrieve Posts for user
+       @GetMapping("/jpa/users/{id}/posts")
+       public List<Post> retrievePosts(@PathVariable int id){
+           Optional<User> user = userRepository.findById(id);
+           if (user.isEmpty())
+               throw new UserNotFoundException("id:" + id);
+           return user.get().getPosts();
+       }
+       ```
+       
+  ### JPA - Create a Post for users
+  
+   1. [Add invalidation, getters and setters in the Post class](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/user/Post.java)
+   2. [Create repository for post](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/jpa/PostRepository.java)
+   3. [Add post mapping of creating posts for user](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/user/UserJpaResource.java)
+
+       ```java
+       // Create a new post for a user
+       @PostMapping("/jpa/users/{id}/posts")
+       public ResponseEntity<Object> createPosts(@PathVariable int id, @Valid @RequestBody Post post){
+           Optional<User> user = userRepository.findById(id);
+           if (user.isEmpty())
+               throw new UserNotFoundException("id:" + id);
+           post.setUser(user.get());
+   
+           Post savedPost = postRepository.save(post);
+           URI localtion = ServletUriComponentsBuilder.fromCurrentRequest()
+                   .path("/{id}")
+                   .buildAndExpand(savedPost.getId())
+                   .toUri(); // users/4 => /users/{id}
+           return ResponseEntity.created(localtion).build();
+       }
+       ```
 
 ## Note 1018 - REST API P140-P142
-### JPA
+### REST API of Social Media
    1. Create [table](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/user/User.java)
       ```java
       // Rename "USER" because "USER" is a keyword of SQL
@@ -18,7 +57,7 @@
    4. Go to `http://localhost:8080/h2-console/`
    5. Create [Repository](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/jpa/UserRepository.java)
    6. Create [JpaResource](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/user/UserJpaResource.java)
-### JPA - POST
+### JPA - User's Posts(Not Post of REST API!)
    1. Create a [Post entity](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/user/Post.java), and we want to post User
    2. Add `@OneToMany` annotation to [User entity](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/user/User.java), `@ManyToOne(fetch = FetchType.LAZY)` annotation to Post, and `@JsonIgnore` annotation to both of them
    3. Add `spring.jpa.show-sql=true` to application.properties
@@ -227,9 +266,14 @@
 
 
 ## Note 1010 - REST API P112-P119
-1. Create a new project. Add 4 dependencies: Spring Web, Spring Data JPA, H2 Database, and Spring Boot DevTools.
-2. Create a [Controller](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/helloworld/HelloWorldController.java) and [Bean class](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/helloworld/HelloWorldBean.java).
-3. Some questions:
+1. Which APIs will we create?
+
+   ![23](https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/8edade7d-f4fc-40b2-9b5b-8d3286bd5b46)
+
+   
+3. Create a new project. Add 4 dependencies: Spring Web, Spring Data JPA, H2 Database, and Spring Boot DevTools.
+4. Create a [Controller](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/helloworld/HelloWorldController.java) and [Bean class](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/helloworld/HelloWorldBean.java).
+5. Some questions:
    
    <img width="726" alt="bg" src="https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/d9a44e82-833b-4d0d-a2ba-576db3264196">
 
