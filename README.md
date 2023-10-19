@@ -1,7 +1,7 @@
 # Spring-Framework-Study
 **This is my note on studying Java Spring Boot**
 
-## Note 1018 - REST API P140-P
+## Note 1018 - REST API P140-P142
 ### JPA
    1. Create [table](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/user/User.java)
       ```java
