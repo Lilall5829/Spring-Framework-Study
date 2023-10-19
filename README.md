@@ -1,6 +1,6 @@
 # Spring-Framework-Study
 **This is my note on studying Java Spring Boot**
-## Note 1019 - REST API P143-P142
+## Note 1019 - REST API P143-P150
 ### JPA - Retrieve Posts for users
    1. [Add getters and setters in the User class for Post](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/user/User.java)
    2. [Add get mapping of retrieving posts for user(By id)](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/user/UserJpaResource.java)
@@ -15,8 +15,8 @@
            return user.get().getPosts();
        }
        ```
-       
-  ### JPA - Create a Post for users
+
+### JPA - Create a Post for users
   
    1. [Add invalidation, getters and setters in the Post class](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/user/Post.java)
    2. [Create repository for post](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/jpa/PostRepository.java)
@@ -39,7 +39,30 @@
            return ResponseEntity.created(localtion).build();
        }
        ```
+       
+### JPA - Security
+  
+1. How to complete security authorization in Talend API Tester
 
+   ![25](https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/16dcddcd-459e-4d13-9356-948051aeb907)
+
+2. [Overriding the default filter chain](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/security/SpringSecurityConfiguration.java), which defined by Spring security
+   ```java
+   @Configuration
+   public class SpringSecurityConfiguration {
+       @Bean
+       public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
+           // 1. All requests should be authenticated
+           httpSecurity.authorizeHttpRequests(auth -> auth.anyRequest().authenticated());
+           // 2. If a request is not authenticated, a web page is shown
+           httpSecurity.httpBasic(withDefaults());
+           // 3. CSRF -> POST, PUT
+           httpSecurity.csrf().disable();
+           return  httpSecurity.build();
+       }
+   }
+   ```
+     
 ## Note 1018 - REST API P140-P142
 ### REST API of Social Media
    1. Create [table](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/user/User.java)
