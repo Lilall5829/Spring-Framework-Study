@@ -1,5 +1,6 @@
 package com.rest.webservices.restfulwebservices.user;
 
+import com.rest.webservices.restfulwebservices.jpa.PostRepository;
 import com.rest.webservices.restfulwebservices.jpa.UserRepository;
 import jakarta.validation.Valid;
 import org.springframework.hateoas.EntityModel;
@@ -19,9 +20,11 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 public class UserJpaResource {
     //Replace "userDaoService" by "userRepository". Not use UserDaoService
     private UserRepository userRepository;
+    private PostRepository postRepository;
 
-    public UserJpaResource(UserRepository userRepository) {
+    public UserJpaResource(UserRepository userRepository, PostRepository postRepository) {
         this.userRepository = userRepository;
+        this.postRepository = postRepository;
     }
 
     // /jpa/users
@@ -50,7 +53,6 @@ public class UserJpaResource {
     }
     //Delete
     @DeleteMapping("/jpa/users/{id}")
-    //@PathVariable is different from @RequestParam. Pay attention to use them!
     public void deleteUser(@PathVariable int id){
         userRepository.deleteById(id);
     }
@@ -68,4 +70,29 @@ public class UserJpaResource {
                 .toUri(); // users/4 => /users/{id}
         return ResponseEntity.created(localtion).build();
     }
+
+    // Retrieve Posts for a user
+    @GetMapping("/jpa/users/{id}/posts")
+    public List<Post> retrievePosts(@PathVariable int id){
+        Optional<User> user = userRepository.findById(id);
+        if (user.isEmpty())
+            throw new UserNotFoundException("id:" + id);
+        return user.get().getPosts();
+    }
+    // Create a Post for a user
+    @PostMapping("/jpa/users/{id}/posts")
+    public ResponseEntity<Object> createPosts(@PathVariable int id, @Valid @RequestBody Post post){
+        Optional<User> user = userRepository.findById(id);
+        if (user.isEmpty())
+            throw new UserNotFoundException("id:" + id);
+        post.setUser(user.get());
+
+        Post savedPost = postRepository.save(post);
+        URI localtion = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(savedPost.getId())
+                .toUri(); // users/4 => /users/{id}
+        return ResponseEntity.created(localtion).build();
+    }
+
 }
