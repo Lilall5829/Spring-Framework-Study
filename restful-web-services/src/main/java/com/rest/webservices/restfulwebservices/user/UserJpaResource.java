@@ -1,5 +1,6 @@
 package com.rest.webservices.restfulwebservices.user;
 
+import com.rest.webservices.restfulwebservices.jpa.UserRepository;
 import jakarta.validation.Valid;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
@@ -9,46 +10,38 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
 public class UserJpaResource {
-    private UserDaoService userDaoService;
+    //Replace "userDaoService" by "userRepository". Not use UserDaoService
+    private UserRepository userRepository;
 
-    public UserJpaResource(UserDaoService userDaoService) {
-        this.userDaoService = userDaoService;
+    public UserJpaResource(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
-    //GET /users
-    @GetMapping("/users")
+    // /jpa/users
+    @GetMapping("/jpa/users")
     public List<User> retrieveAllUsers(){
-        return userDaoService.findAll();
+        return userRepository.findAll();
     }
-
-    //GET /users/1
-//    @GetMapping("/users/{id}")
-//    //@PathVariable is different from @RequestParam. Pay attention to use them!
-//    public User retrieveUser(@PathVariable int id){
-//        User user = userDaoService.findById(id);
-//        if (user == null)
-//            //UserNotFoundException extends RuntimeException class
-//            throw new UserNotFoundException("id:" + id);
-////        return userDaoService.findById(id);
-//        return user;
-//    }
-
 
     // HATEOAS
     // EntityModel and WebMvcLinkBuilder
-    @GetMapping("/users/{id}")
+    @GetMapping("/jpa/users/{id}")
     public EntityModel<User> retrieveUser(@PathVariable int id){
-        User user = userDaoService.findById(id);
-        if (user == null)
+        // Change the type of user from "User" to "Optional<User>"
+        Optional<User> user = userRepository.findById(id);
+//      if (user == null)
+        if (user.isEmpty())
             throw new UserNotFoundException("id:" + id);
         // Wrap the User, create an EntityModel
-        EntityModel<User> entityModel = EntityModel.of(user);
+//        EntityModel<User> entityModel = EntityModel.of(user);
+        EntityModel<User> entityModel = EntityModel.of(user.get());
         // Use WebMvcLinkBuilder to create a link
         WebMvcLinkBuilder link = linkTo(methodOn(this.getClass()).retrieveAllUsers());
         // Add the link to the EntityModel
@@ -56,18 +49,18 @@ public class UserJpaResource {
         return entityModel;
     }
     //Delete
-    @DeleteMapping("/users/{id}")
+    @DeleteMapping("/jpa/users/{id}")
     //@PathVariable is different from @RequestParam. Pay attention to use them!
     public void deleteUser(@PathVariable int id){
-        userDaoService.deleteById(id);
+        userRepository.deleteById(id);
     }
 
     //POST /users
-    @PostMapping("/users")
+    @PostMapping("/jpa/users")
     //Make this method to response of POST status, it should return 201
     //Add @Valid
     public ResponseEntity<User> createUser(@Valid @RequestBody User user){
-        User savedUser = userDaoService.save(user);
+        User savedUser = userRepository.save(user);
         //location - /users/4
         URI localtion = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
