@@ -1,5 +1,25 @@
 # Spring-Framework-Study
 **This is my note on studying Java Spring Boot**
+
+## Note 1018 - REST API P140-P
+### JPA
+   1. Create [table](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/user/User.java)
+      ```java
+      // Rename "USER" because "USER" is a keyword of SQL
+      @Entity(name = "user_details")
+      public class User {
+          @Id
+          @GeneratedValue
+          private Integer id;
+      ......
+      ```
+   2. Add `spring.datasource.url=jdbc:h2:mem:testdb` and `spring.jpa.defer-datasource-initialization=true` to application.properties
+   3. Create [SQL file](restful-web-services/src/main/resources/data.sql)
+   4. Go to `http://localhost:8080/h2-console/`
+   5. Create [Repository](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/jpa/UserRepository.java)
+   6. Create [JpaResource](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/user/UserJpaResource.java)
+
+
 ## Note 1017 - REST API P137-P139
 ### Spring Boot Actuator
 
