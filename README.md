@@ -14,10 +14,15 @@
       ......
       ```
    2. Add `spring.datasource.url=jdbc:h2:mem:testdb` and `spring.jpa.defer-datasource-initialization=true` to application.properties
-   3. Create [SQL file](restful-web-services/src/main/resources/data.sql)
+   3. Create [SQL file](restful-web-services/src/main/resources/data.sql) **Notice: pay attention to the syntax, such as "values", and use '' rather than "" !**
    4. Go to `http://localhost:8080/h2-console/`
    5. Create [Repository](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/jpa/UserRepository.java)
    6. Create [JpaResource](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/user/UserJpaResource.java)
+### JPA - POST
+   1. Create a [Post entity](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/user/Post.java), and we want to post User
+   2. Add `@OneToMany` annotation to [User entity](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/user/User.java), `@ManyToOne(fetch = FetchType.LAZY)` annotation to Post, and `@JsonIgnore` annotation to both of them
+   3. Add `spring.jpa.show-sql=true` to application.properties
+   4. Add more queries to [SQL files](restful-web-services/src/main/resources/data.sql) 
 
 
 ## Note 1017 - REST API P137-P139
