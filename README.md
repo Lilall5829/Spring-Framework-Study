@@ -1,5 +1,20 @@
 # Spring-Framework-Study
 **This is my note on studying Java Spring Boot**
+
+
+## Note 1019 - Full Stack P152 -155
+### Full Stack Architecture
+   1. Make sure installed Node.js and npm. And initialize the json package:
+   
+   ![26](https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/b6f5bd08-292d-46ab-b748-5bf67fac0707)
+
+   2. Find the json package under `C:\Users\lilal` folder and drag the json package into VScode
+
+   3. Install JQuery dependency
+
+   ![27](https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/2f727ca6-9130-47cc-a325-a84a829d66eb)
+
+
 ## Note 1019 - REST API P143-P151
 ### JPA - Retrieve Posts for users
    1. [Add getters and setters in the User class for Post](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/user/User.java)
