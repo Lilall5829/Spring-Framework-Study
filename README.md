@@ -1,10 +1,30 @@
 # Spring-Framework-Study
 **This is my note on studying Java Spring Boot**
+## Note 1022 - Full Stack P156 -163
+### Create and Run React app
+   1. Create React app in the folder at last step
+   ![28](https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/8370bb22-34a5-4594-9618-80ca37f26725)
 
+   2. Run the app
+   ![29](https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/1343e1fd-d655-465a-b4b5-311fc500acd5)
 
-## Note 1019 - Full Stack P152 -155
+   3. Some important commands
+      
+      <img width="630" alt="30" src="https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/86a94a88-4137-4d24-a678-0a24d1500092">
+
+   4. Some useful shortcut in VScode
+      - Ctrl+B: Toggle the sidebar
+      - Ctrl+P: Search files
+
+   5. Make some changes:
+      - Change the title of index.html
+      - Change the content of App.js: Remove everything in Appdiv and add new content
+      - Change the content of App.css: remove everything except the first one(.App)
+
+      
+## Note 1021 - Full Stack P152 -155
 ### Full Stack Architecture
-   1. Make sure installed Node.js and npm. And initialize the json package:
+   1. Make sure to install Node.js and npm. And initialize the JSON package:
    
    ![26](https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/b6f5bd08-292d-46ab-b748-5bf67fac0707)
 
