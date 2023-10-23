@@ -1,6 +1,6 @@
 # Spring-Framework-Study
 **This is my note on studying Java Spring Boot**
-## Note 1022 - Full Stack P156 -163
+## Note 1022 - Full Stack P156 -165
 ### Create and Run React app
    1. Create React app in the folder at last step
    ![28](https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/8370bb22-34a5-4594-9618-80ca37f26725)
@@ -18,9 +18,21 @@
 
    5. Make some changes:
       - Change the title of index.html
-      - Change the content of App.js: Remove everything in Appdiv and add new content
-      - Change the content of App.css: remove everything except the first one(.App)
+      - Change the content of [App.js](https://github.com/Lilall5829/VSCodeProject/blob/main/FullStack/todo-app/src/App.js): Remove everything in Appdiv and add new content
+      - Change the content of [App.css](https://github.com/Lilall5829/VSCodeProject/blob/main/FullStack/todo-app/src/App.css): remove everything except the first one(.App)
+   6. JSX
+      - For JSX, **close tags are mandatory** and all couples of tags should wrap with div or empty wrapper(<>...</>)
+      - **Custom** Components should start with **upper case letter**
+      - Special "**classname**" rather than "class":
+        ```jsx
+        function FirstComponent() {
+            return <div className="FirstComponent">First Component</div>;
+        }
+        ```
 
+   7. [Babel](https://babeljs.io/)
+      - Convert JSX TO JS 
+      
       
 ## Note 1021 - Full Stack P152 -155
 ### Full Stack Architecture
