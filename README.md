@@ -1,6 +1,55 @@
 # Spring-Framework-Study
 **This is my note on studying Java Spring Boot**
-## Note 1019 - REST API P143-P142
+## Note 1022 - Full Stack P156 -165
+### Create and Run React app
+   1. Create React app in the folder at last step
+   ![28](https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/8370bb22-34a5-4594-9618-80ca37f26725)
+
+   2. Run the app
+   ![29](https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/1343e1fd-d655-465a-b4b5-311fc500acd5)
+
+   3. Some important commands
+      
+      <img width="630" alt="30" src="https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/86a94a88-4137-4d24-a678-0a24d1500092">
+
+   4. Some useful shortcut in VScode
+      - Ctrl+B: Toggle the sidebar
+      - Ctrl+P: Search files
+
+   5. Make some changes:
+      - Change the title of index.html
+      - Change the content of [App.js](https://github.com/Lilall5829/VSCodeProject/blob/main/FullStack/todo-app/src/App.js): Remove everything in Appdiv and add new content
+      - Change the content of [App.css](https://github.com/Lilall5829/VSCodeProject/blob/main/FullStack/todo-app/src/App.css): remove everything except the first one(.App)
+   6. JSX
+      - For JSX, **close tags are mandatory** and all couples of tags should wrap with div or empty wrapper(<>...</>)
+      - **Custom** Components should start with **upper case letter**
+      - Special "**classname**" rather than "class":
+        ```jsx
+        function FirstComponent() {
+            return <div className="FirstComponent">First Component</div>;
+        }
+        ```
+
+   7. [Babel](https://babeljs.io/)
+      - Convert JSX TO JS
+
+   8. [First React app](FullStack/todo-app/src)
+      
+      
+## Note 1021 - Full Stack P152 -155
+### Full Stack Architecture
+   1. Make sure to install Node.js and npm. And initialize the JSON package:
+   
+   ![26](https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/b6f5bd08-292d-46ab-b748-5bf67fac0707)
+
+   2. Find the json package under `C:\Users\lilal` folder and drag the json package into VScode
+
+   3. Install JQuery dependency
+
+   ![27](https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/2f727ca6-9130-47cc-a325-a84a829d66eb)
+
+
+## Note 1019 - REST API P143-P151
 ### JPA - Retrieve Posts for users
    1. [Add getters and setters in the User class for Post](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/user/User.java)
    2. [Add get mapping of retrieving posts for user(By id)](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/user/UserJpaResource.java)
@@ -15,8 +64,8 @@
            return user.get().getPosts();
        }
        ```
-       
-  ### JPA - Create a Post for users
+
+### JPA - Create a Post for users
   
    1. [Add invalidation, getters and setters in the Post class](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/user/Post.java)
    2. [Create repository for post](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/jpa/PostRepository.java)
@@ -39,7 +88,30 @@
            return ResponseEntity.created(localtion).build();
        }
        ```
+       
+### JPA - Security
+  
+1. How to complete security authorization in Talend API Tester
 
+   ![25](https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/16dcddcd-459e-4d13-9356-948051aeb907)
+
+2. [Overriding the default filter chain](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/security/SpringSecurityConfiguration.java), which defined by Spring security
+   ```java
+   @Configuration
+   public class SpringSecurityConfiguration {
+       @Bean
+       public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
+           // 1. All requests should be authenticated
+           httpSecurity.authorizeHttpRequests(auth -> auth.anyRequest().authenticated());
+           // 2. If a request is not authenticated, a web page is shown
+           httpSecurity.httpBasic(withDefaults());
+           // 3. CSRF -> POST, PUT
+           httpSecurity.csrf().disable();
+           return  httpSecurity.build();
+       }
+   }
+   ```
+     
 ## Note 1018 - REST API P140-P142
 ### REST API of Social Media
    1. Create [table](restful-web-services/src/main/java/com/rest/webservices/restfulwebservices/user/User.java)
