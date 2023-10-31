@@ -1,6 +1,66 @@
 # Spring-Framework-Study
 **This is my note on studying Java Spring Boot**
-## Note 1022 - Full Stack P156 -165
+## Note 1030 - Back End of Todo APP P1-
+### Call REST APIs in React: Axios
+   1. Install Axios
+      `npm install axios`
+
+   2. Import and use Axios [in Welcome page](FullStack/todo-app/src/components/todo/WelcomeComponent.jsx)
+
+      ```javascript
+      import axios from "axios";
+      function callHelloWorldRestApi() {
+        // Haed code the username here
+        retrieveHelloWorldBean("lila")
+          .then((response) => successfulResponse(response))
+          .catch((error) => errorResponse(error))
+          .finally(() => console.log("cleanup"));
+        // "then" means when rest API called successful, then do it
+      }
+      ```
+      And [APIService](FullStack/todo-app/src/components/todo/api/HelloWorldApiService.js)
+      
+      ```javascript
+      import axios from "axios";
+      // export function retrieveHelloWorldBean() {
+      //   // How to call the rest apis in React: axios
+      //   return axios.get("http://localhost:8080/hello-world-bean");
+      // }
+      
+      // A simpler way to use axios: create an arrow function
+      // export const retrieveHelloWorldBean = () =>
+      //   axios.get("http://localhost:8080/hello-world-bean");
+      
+      const apiClient = axios.create({
+        baseURL: "http://localhost:8080",
+      });
+      
+      // How to get a parameter from URL:
+      export const retrieveHelloWorldBean = (username) =>
+        apiClient.get(`/hello-world/path-variable/${username}`);
+      ```
+      
+      
+### Enabling CORS(Cross-Origin Requests) Requests for Spring Boot REST API
+
+   Create a java bean for enabling CORS in [RestfulWebServicesApplication](todoApp/src/main/java/com/rest/webservices/restfulwebservices/RestfulWebServicesApplication.java)
+    
+   ```java
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+
+        return new WebMvcConfigurer() {
+            // Override addCorsMappings
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                // Allow any URl and any request from port 3000
+                registry.addMapping("/**").allowedMethods("*").allowedOrigins("http://localhost:3000"); // Notice: The origin should be an absolute path!
+            }
+    };
+   ```
+
+
+## Note 1022 - Full Stack P156 -196
 ### Create and Run React app
    1. Create React app in the folder at last step
    ![28](https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/8370bb22-34a5-4594-9618-80ca37f26725)
