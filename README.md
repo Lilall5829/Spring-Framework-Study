@@ -1,5 +1,15 @@
 # Spring-Framework-Study
 **This is my note on studying Java Spring Boot**
+## Note 1106 Use JWT
+### Get token from Talend API Tester
+   1. Create a POST request to get token from /authenticate
+
+   ![31](https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/717afa76-3694-455b-b65c-7d71256b44b5)
+
+   2. Create a GET request to use token. **Note**: The token must be the latest one get from /authenticate!!!
+      
+   ![32](https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/25adefb3-5dad-4363-9fcf-76a989513db2)
+
 ## Note 1030 - Back End of Todo APP P1-
 ### Call REST APIs in React: Axios
    1. Install Axios
