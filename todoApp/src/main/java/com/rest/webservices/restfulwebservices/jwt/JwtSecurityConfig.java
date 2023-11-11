@@ -54,13 +54,15 @@ public class JwtSecurityConfig {
                         auth ->
                                 auth.requestMatchers("/authenticate", "/actuator", "/actuator/*")
                                         .permitAll()
+                                        .requestMatchers("/h2-console/**")
+                                        .permitAll()
                                         .requestMatchers(HttpMethod.OPTIONS,"/**")
                                         .permitAll()
                                         .anyRequest()
                                         .authenticated()) // (3)
 //                .oauth2ResourceServer(
 //                        OAuth2ResourceServerConfigurer::jwt) // (4)
-                .oauth2ResourceServer((oauth2) -> oauth2.jwt(Customizer.withDefaults())) // (4)
+                .oauth2ResourceServer((oauth2) -> oauth2.jwt(Customizer.withDefaults()))
                 .exceptionHandling(
                         (ex) ->
                                 ex.authenticationEntryPoint(
@@ -69,6 +71,9 @@ public class JwtSecurityConfig {
                                                 new BearerTokenAccessDeniedHandler()))
                 .httpBasic(
                         Customizer.withDefaults()) // (5)
+                .headers(header -> {
+                    header.frameOptions().sameOrigin();
+                })
                 .build();
     }
 

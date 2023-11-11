@@ -6,7 +6,7 @@ insert into user_details(id, birth_Date, name)
 values(10002, current_date(), 'lila2');
 
 insert into user_details(id, birth_Date, name)
-values(10003, current_date(), 'lila3');
+values(10003, current_date(), 'lala');
 
 insert into post(id, description, user_id)
 values (20001, 'I want to learn AWS', 10001);
