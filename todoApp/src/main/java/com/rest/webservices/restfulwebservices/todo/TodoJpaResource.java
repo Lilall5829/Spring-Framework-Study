@@ -8,10 +8,12 @@ import java.util.List;
 @RestController
 public class TodoJpaResource {
 
+    private TodoService todoService;
 
     private TodoRepository todoRepository;
 
-    public TodoJpaResource(TodoRepository todoRepository) {
+    public TodoJpaResource(TodoService todoService, TodoRepository todoRepository) {
+        this.todoService = todoService;
         this.todoRepository = todoRepository;
     }
 
@@ -25,7 +27,8 @@ public class TodoJpaResource {
     public Todo retrieveTodo(@PathVariable String username,
                              @PathVariable int id) {
         //return todoService.findById(id);
-        return todoRepository.findById(id).get();
+//        return todoRepository.findById(id).get();
+        return todoRepository.findById(id).orElse(null);
     }
 
     @DeleteMapping("/users/{username}/todos/{id}")
@@ -47,8 +50,8 @@ public class TodoJpaResource {
     @PostMapping("/users/{username}/todos")
     public Todo createTodo(@PathVariable String username,
                            @RequestBody Todo todo) {
-//        todo.setUsername(username);
-//        todo.setId(null);
+        todo.setUsername(username);
+        todo.setId(null);
         return todoRepository.save(todo);
 //		Todo createdTodo = todoService.addTodo(username, todo.getDescription(),
 //				todo.getTargetDate(),todo.isDone() );
