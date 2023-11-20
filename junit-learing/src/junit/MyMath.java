@@ -6,6 +6,7 @@ public class MyMath {
         for(int number:numbers){
             sum+=number;
         }
+        System.out.println("math");
         return sum;
     }
 }
