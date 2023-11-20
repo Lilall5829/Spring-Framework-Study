@@ -1,5 +1,14 @@
 # Spring-Framework-Study
 **This is my note on studying Java Spring Boot**
+## Note 1117 Spring Security
+
+   <img width="571" alt="33" src="https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/07980cdc-eb3e-4272-aa54-a980fd9a0a49">
+
+   <img width="533" alt="34" src="https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/08f45d98-29e6-4e8a-81eb-71ff9a605b7a">
+
+   <img width="812" alt="35" src="https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/87bbe7a6-55f8-42b4-9905-144182ab8f0e">
+
+
 ## Note 1106 Use JWT
 ### Get token from Talend API Tester
    1. Create a POST request to get token from /authenticate
