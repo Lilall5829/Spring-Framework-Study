@@ -11,17 +11,33 @@ class Solution {
 //        Arrays.sort(sArray);
 //        Arrays.sort(tArray);
 //        return Arrays.equals(sArray,tArray);
-//    }
-        HashMap<Character, Integer> count = new HashMap<>();
-        for (char x : s.toCharArray()) {
-            count.put(x, count.getOrDefault(x, 0) + 1);
+
+
+
+//        HashMap<Character, Integer> count = new HashMap<>();
+//        for (char x : s.toCharArray()) {
+//            count.put(x, count.getOrDefault(x, 0) + 1);
+//        }
+//        for (char x : t.toCharArray()) {
+//            count.put(x, count.getOrDefault(x, 0) - 1);
+//        }
+//        for (int val : count.values()) {
+//            if (val != 0)
+//                return false;
+//        }
+//        return true;
+
+        int[] count = new int[26];
+        for (char x: s.toCharArray()){
+            count[x - 'a'] ++;
         }
-        for (char x : t.toCharArray()) {
-            count.put(x, count.getOrDefault(x, 0) - 1);
+        for (char x: t.toCharArray()){
+            count[x - 'a'] --;
         }
-        for (int val : count.values()) {
-            if (val != 0)
+        for (int val:count){
+            if(val!=0)
                 return false;
+
         }
         return true;
     }
