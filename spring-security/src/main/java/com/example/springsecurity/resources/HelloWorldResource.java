@@ -1,4 +1,4 @@
-package com.example.springsecurity;
+package com.example.springsecurity.resources;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,6 +10,6 @@ public class HelloWorldResource {
     // Input URL:http://localhost:8080/logout to log out
     @GetMapping("/hello-world")
     public String helloWorld(){
-        return "Hello World";
+        return "Hello World?";
     }
 }
