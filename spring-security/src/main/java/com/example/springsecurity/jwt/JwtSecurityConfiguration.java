@@ -1,5 +1,6 @@
 package com.example.springsecurity.jwt;
 
+import com.nimbusds.jose.JOSEException;
 import com.nimbusds.jose.KeySourceException;
 import com.nimbusds.jose.jwk.JWK;
 import com.nimbusds.jose.jwk.JWKSelector;
@@ -23,6 +24,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.oauth2.jwt.JwtDecoder;
+import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -146,5 +149,10 @@ public class JwtSecurityConfiguration {
     public JWKSource<SecurityContext> jwkSource(RSAKey rsaKey){
         var jwkSet = new JWKSet(rsaKey);
         return (jwkSelector, context) -> jwkSelector.select(jwkSet);
+    }
+    // 4. Use RSA Public Key for Decoding
+    @Bean
+    public JwtDecoder jwtDecoder(RSAKey rsaKey) throws JOSEException {
+        return NimbusJwtDecoder.withPublicKey(rsaKey.toRSAPublicKey()).build();
     }
 }
