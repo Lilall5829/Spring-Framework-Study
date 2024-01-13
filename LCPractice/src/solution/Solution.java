@@ -2,43 +2,20 @@ package solution;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 class Solution {
-    public boolean isAnagram(String s, String t) {
-//        char[] sArray = s.toCharArray();
-//        char[] tArray = t.toCharArray();
-//        Arrays.sort(sArray);
-//        Arrays.sort(tArray);
-//        return Arrays.equals(sArray,tArray);
 
-
-
-//        HashMap<Character, Integer> count = new HashMap<>();
-//        for (char x : s.toCharArray()) {
-//            count.put(x, count.getOrDefault(x, 0) + 1);
-//        }
-//        for (char x : t.toCharArray()) {
-//            count.put(x, count.getOrDefault(x, 0) - 1);
-//        }
-//        for (int val : count.values()) {
-//            if (val != 0)
-//                return false;
-//        }
-//        return true;
-
-        int[] count = new int[26];
-        for (char x: s.toCharArray()){
-            count[x - 'a'] ++;
+    public int maxProfit(int[] prices) {
+        int profit = 0;
+        int of = 0;
+        int cf = 0;
+        for (int i = 0; i < prices.length - 1; i++) {
+            if(prices[i]<prices[i+1]){
+                profit += (prices[i+1]-prices[i]);
+            }
         }
-        for (char x: t.toCharArray()){
-            count[x - 'a'] --;
-        }
-        for (int val:count){
-            if(val!=0)
-                return false;
-
-        }
-        return true;
+        return profit;
     }
 }

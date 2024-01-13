@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>VogueVista Boutique</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+    <style>
+        /* Custom CSS */
+        .list-inline-item a {
+            color: white; /* Changing link color to white */
+            text-decoration: none; /* Remove underlines */
+        }
+
+        .list-inline-item a:hover {
+            text-decoration: underline; /* Adding underline on hover */
+        }
+    </style>
+    <!-- Common Footer -->
+    <footer th:fragment="common_footer" class="bg-success mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item"><a href="#">Terms of Service</a></li>
+                        <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+                        <li class="list-inline-item"><a href="#">Shipping Information</a></li>
+                        <li class="list-inline-item"><a href="#">Returns & Refunds</a></li>
+                    </ul>
+                    <p class="text-white">
+                        <small>&copy; 2023 VogueVista Boutique</small>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</head>
+<body>
+</body>
+</html>

@@ -8,7 +8,7 @@ class SolutionTest {
     private final Solution solution = new Solution();
     @Test
     void test(){
-        assertEquals(false, solution.isAnagram("cat","rat"));
-        assertEquals(true, solution.isAnagram("anagram","nagaram"));
+        int[] prices = {7,6,4,3,1};
+        assertEquals(0, solution.maxProfit(prices));
     }
 }
