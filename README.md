@@ -1,5 +1,13 @@
 # Spring-Framework-Study
 **This is my note on studying Java Spring Boot**
+
+## Note 0113 JWT Authentication
+
+   [Project example](https://github.com/Lilall5829/Spring-Framework-Study/blob/main/spring-security/src/main/java/com/example/springsecurity/jwt/JwtSecurityConfiguration.java)
+
+   <img width="485" alt="37" src="https://github.com/Lilall5829/Spring-Framework-Study/assets/134081469/5a16e1ba-7467-485f-855c-16881b682b92">
+
+
 ## Note 1117 Spring Security
 
    [Project example](spring-security/src/main/java/com/example/springsecurity)
